@@ -12,9 +12,10 @@ def main():
 	for i in range(len(nextLines)):
 		busNumber = nextLines[i]["MonitoredVehicleJourney"]["LineRef"]["Value"]
 		expectedTimeString=nextLines[i]["MonitoredVehicleJourney"]["MonitoredCall"]["LatestExpectedArrivalTime"]
+		destinationName=nextLines[i]["MonitoredVehicleJourney"]["DestinationName"][0]["Value"]
 		expectedTime = int(expectedTimeString.replace("+0930)/","").replace("/Date(",""))
 		expectedArrivalMin = int((expectedTime-timeNow)/1000/60)
-		print busNumber,expectedArrivalMin
+		print busNumber,expectedArrivalMin,destinationName
 
 if __name__ == "__main__":
     	main()
